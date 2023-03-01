@@ -1,16 +1,16 @@
 {
-  "id": "dev.replugged.PluginTemplate",
-  "name": "Plugin Template",
-  "description": "A plugin template",
+  "id": "dev.ryand.PinDMs",
+  "name": "PinDMs",
+  "description": "Port of PinDMs to Replugged",
   "author": {
     "name": "replugged",
     "discordID": "1000992611840049192",
     "github": "replugged-org"
   },
-  "version": "1.0.0",
+  "version": "0.0.1",
   "updater": {
     "type": "github",
-    "id": "replugged-org/plugin-template"
+    "id": "elementemerald/replugged-pin-dms"
   },
   "license": "MIT",
   "type": "replugged-plugin",

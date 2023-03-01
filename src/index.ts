@@ -1,24 +1,24 @@
-import { Injector, Logger, webpack } from "replugged";
+import { Injector, Logger, common, webpack } from "replugged";
+import { Channel } from "discord-types/general";
+import { PinDMsSettings } from "./utils";
 
 const inject = new Injector();
-const logger = Logger.plugin("PluginTemplate");
+const logger = Logger.plugin("PinDMS");
 
-export async function start(): Promise<void> {
-  const typingMod = await webpack.waitForModule<{
-    startTyping: (channelId: string) => void;
-  }>(webpack.filters.byProps("startTyping"));
-  const getChannelMod = await webpack.waitForModule<{
-    getChannel: (id: string) => {
-      name: string;
-    };
+export async function start(): Promise<void> {}
+
+async function injectCategoryChannel(): Promise<void> {
+  const channelStore = await webpack.waitForModule<{
+    getChannel: (channelId: string) => Channel;
   }>(webpack.filters.byProps("getChannel"));
 
-  if (typingMod && getChannelMod) {
-    inject.instead(typingMod, "startTyping", ([channel]) => {
-      const channelObj = getChannelMod.getChannel(channel);
-      logger.log(`Typing prevented! Channel: #${channelObj?.name ?? "unknown"} (${channel}).`);
-    });
-  }
+  const { lastMessageId } = await webpack.waitForModule<{
+    lastMessageId: (channelId: string) => string;
+  }>(webpack.filters.byProps("lastMessageId"));
+
+  const { getDMFromUserId } = await webpack.waitForModule<{
+    getDMFromUserId: (userId: string) => string;
+  }>(webpack.filters.byProps("getDMFromUserId"));
 }
 
 export function stop(): void {
