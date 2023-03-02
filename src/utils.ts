@@ -1,4 +1,5 @@
 import { settings } from "replugged";
+import { Channel } from "discord-types/general";
 
 interface PinDMsFLOptions {
   sortOptions: boolean;
@@ -30,6 +31,13 @@ export let PinDMsSettings: settings.SettingsManager<
     friendList: PinDMsFLOptions;
     general: PinDMsGeneralOptions;
     recentOrder: PinDMsRecentOrderOptions;
+    pinDms: PinDMsCurrent;
   },
   never
 >;
+
+export interface PrivateChannelRender {
+  channel: Channel;
+}
+
+//export type PrivateChannelRenderFunc = (args: PrivateChannelRender) => unknown;

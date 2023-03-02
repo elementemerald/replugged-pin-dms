@@ -3,9 +3,9 @@
   "name": "PinDMs",
   "description": "Port of PinDMs to Replugged",
   "author": {
-    "name": "replugged",
-    "discordID": "1000992611840049192",
-    "github": "replugged-org"
+    "name": "ryand",
+    "discordID": "660292639412846621",
+    "github": "elementemerald"
   },
   "version": "0.0.1",
   "updater": {
