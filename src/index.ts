@@ -11,7 +11,7 @@ export async function start(): Promise<void> {
 
 async function injectCategoryChannel(): Promise<void> {
   const PrivateChannel = await webpack.waitForModule<{
-    $$typeof: Symbol;
+    $$typeof: symbol;
     render: types.AnyFunction;
   }>(webpack.filters.bySource(/.\..\.Messages.DIRECT_MESSAGES/));
 
